@@ -5,9 +5,10 @@ import { createStore, applyMiddleware } from 'redux';
 import App from './components/App';
 import reducers from './reducers/index';
 import registerServiceWorker from './registerServiceWorker';
-//import {applyMiddleware} from 
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 ReactDOM.render( <Provider store={createStoreWithMiddleware(reducers)}><App/>
+
 </Provider>, document.getElementById('root'));
 
 
