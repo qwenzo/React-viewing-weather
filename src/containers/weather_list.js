@@ -1,10 +1,13 @@
 import React,{Component} from'react'
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {fetchWeather} from '../actions/index';
 
 class WeatherList extends Component {
 
     render(){
         return (
-            <table class="table">
+            <table className="table">
             <thead>
               <tr>
                 <th >City</th>
@@ -24,4 +27,11 @@ class WeatherList extends Component {
     }
 }
 
-export default WeatherList;
+function MapStateToProps(state){
+    return{
+       weather:state.weather
+    }
+
+}
+
+export default connect(MapStateToProps,null)(WeatherList);
