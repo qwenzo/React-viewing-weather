@@ -1,4 +1,7 @@
 import React,{Component} from 'react'
+import {connect} from 'react-redux'
+import {bindActionCreators} from'redux';
+import {fetchWeather} from '../actions/index';
 
 const formStyle = {
     width: '50%',
@@ -11,12 +14,14 @@ class SearchBar extends Component{
         super(props);
         this.state={cityTerm:'',CountreyTerm:''};
         this.onChange=this.onChange.bind(this);
+        this.onSubmit=this.onSubmit.bind(this);
 
     }
 
 
     onSubmit(event){
         event.preventDefault();
+       console.log(this.props.fetchWeather(this.state.cityTerm,this.state.CountreyTerm)) ;
 
     }
 
@@ -49,4 +54,11 @@ class SearchBar extends Component{
     }
 }
 
-export default SearchBar;
+
+
+function mapDispatchtoProps(dispatch){
+    return bindActionCreators({fetchWeather},dispatch);
+
+}
+
+export default connect(null,mapDispatchtoProps)(SearchBar);
