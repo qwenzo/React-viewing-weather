@@ -1,6 +1,13 @@
 import React,{Component} from'react'
 import {connect} from 'react-redux';
 import {fetchWeather} from '../actions/index';
+import Chart from '../components/Chart'
+
+const pStyle = {
+        verticalAlign: 'center',
+        width:'150px'
+  };
+
 
 class WeatherList extends Component {
 
@@ -13,19 +20,19 @@ class WeatherList extends Component {
         const name = weather.data.city.name;
         const humidities = weather.data.list.map((data)=>{return data.main.humidity});
         const pressures =weather.data.list.map((data)=>{return data.main.pressure});
-        const tempratures =weather.data.list.map((data)=>{return data.main.temprature});
+        const temperatures =weather.data.list.map((data)=>{return data.main.temp});
        return   <tr>
-           <td> {name} </td>  
-           <td> {tempratures} </td>  
-           <td> {humidities} </td>  
-           <td> {pressures} </td>  
+           <td  style={pStyle}  >{name} </td>  
+           <td style={pStyle} > <Chart data={temperatures} color="red"/> </td>  
+           <td style={pStyle} > <Chart data={pressures} color="green"/> </td>  
+           <td  style={pStyle} > <Chart data={humidities} color="blue"/> </td>  
        </tr>;
     }
 
     render(){
         console.log(this.props.weather);
         return (
-            <table className="table">
+            <table  className="table">
             <thead>
               <tr>
                 <th >City</th>
