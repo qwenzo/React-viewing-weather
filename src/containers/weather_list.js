@@ -2,8 +2,9 @@ import React,{Component} from'react'
 import {connect} from 'react-redux';
 import {fetchWeather} from '../actions/index';
 import Chart from '../components/Chart'
+import GoogleMaps from '../components/GoogleMaps'
 
-const pStyle = {
+const tdStyle = {
         verticalAlign: 'center',
         width:'150px'
   };
@@ -21,16 +22,15 @@ class WeatherList extends Component {
         const humidities = weather.data.list.map((data)=>{return data.main.humidity});
         const pressures =weather.data.list.map((data)=>{return data.main.pressure});
         const temperatures =weather.data.list.map((data)=>{return data.main.temp});
-       return   <tr>
-           <td  style={pStyle}  >{name} </td>  
-           <td style={pStyle} > <Chart data={temperatures} color="red"/> </td>  
-           <td style={pStyle} > <Chart data={pressures} color="green"/> </td>  
-           <td  style={pStyle} > <Chart data={humidities} color="blue"/> </td>  
-       </tr>;
+       return  ( < tr key ={name}>
+           <td style={tdStyle}><GoogleMaps /></td>  
+           <td style={tdStyle}> <Chart data={temperatures} color="red"/> </td>  
+           <td style={tdStyle}> <Chart data={pressures} color="green"/> </td>  
+           <td style={tdStyle}> <Chart data={humidities} color="blue"/> </td>  
+       </tr>);
     }
 
     render(){
-        console.log(this.props.weather);
         return (
             <table  className="table">
             <thead>
