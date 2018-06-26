@@ -10,8 +10,8 @@ export default class GoogleMaps extends Component{
      new window.google.maps.Map(this.refs.map,{
             zoom:12,
             center:{
-                 lat : 37.774929,
-                 lng : -122.419416
+                 lat : this.props.lat,
+                 lng : this.props.lng
             }
             
         });

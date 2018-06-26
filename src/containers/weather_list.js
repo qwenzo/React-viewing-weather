@@ -23,7 +23,7 @@ class WeatherList extends Component {
         const pressures =weather.data.list.map((data)=>{return data.main.pressure});
         const temperatures =weather.data.list.map((data)=>{return data.main.temp});
        return  ( < tr key ={name}>
-           <td style={tdStyle}><GoogleMaps /></td>  
+           <td style={tdStyle}><  GoogleMaps lat={weather.data.city.coord.lat} lng={weather.data.city.coord.lon} /></td>  
            <td style={tdStyle}> <Chart data={temperatures} color="red"/> </td>  
            <td style={tdStyle}> <Chart data={pressures} color="green"/> </td>  
            <td style={tdStyle}> <Chart data={humidities} color="blue"/> </td>  
